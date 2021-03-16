@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Set_DOTENV",
+      "type": "shell",
+      "command": "PIPENV_DOTENV_LOCATION=$PWD"
+    }
+  ]
+}
