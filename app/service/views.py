@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 from utils.responses import CustomResponse
 
-from ..service.models import Service
+from ..service.models import ServiceModel
 from ..service.serializers import ServiceSerializer
 
 
@@ -19,35 +19,12 @@ class ServiceList(views.APIView):
 
     Methods
     -------
-    _get_resource(primary_key)
-        Search for a single register in the table using the PK.
     get(request)
         Retrieves all the resources information of the Service table.
     post(request)
         Creates a new registry for the Service table.
 
     """
-
-    @classmethod
-    def _get_queryset(cls, primary_key: int) -> Optional[Service]:
-        """Get Resource.
-
-        Search for a single register in the table using the PK.
-
-        Parameters
-        ----------
-        primary_key : int
-            Resource primary key.
-
-        Returns
-        -------
-        Service if the PK exists, otherwise None.
-
-        """
-        try:
-            return Service.objects.get(pk=primary_key)
-        except Service.DoesNotExist:
-            return None
 
     def get(self, request: Request) -> Response:
         """GET Request.
@@ -64,7 +41,7 @@ class ServiceList(views.APIView):
         Response
 
         """
-        queryset = Service.objects.all()
+        queryset = ServiceModel.objects.all()
 
         services = ServiceSerializer(queryset, many=True).data
 
@@ -120,7 +97,7 @@ class ServiceDetail(views.APIView):
     """
 
     @classmethod
-    def _get_queryset(cls, primary_key: int) -> Optional[Service]:
+    def _get_queryset(cls, primary_key: int) -> Optional[ServiceModel]:
         """Get Resource.
 
         Search for a single register in the table using the PK.
@@ -136,8 +113,8 @@ class ServiceDetail(views.APIView):
 
         """
         try:
-            return Service.objects.get(pk=primary_key)
-        except Service.DoesNotExist:
+            return ServiceModel.objects.get(pk=primary_key)
+        except ServiceModel.DoesNotExist:
             return None
 
     def get(self, request: Request, primary_key: int) -> Response:

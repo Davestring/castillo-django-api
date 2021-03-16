@@ -3,8 +3,8 @@
 from django.db import models
 
 
-class Service(models.Model):
-    """Service.
+class ServiceModel(models.Model):
+    """ServiceModel.
 
     Extends the Model class from models package and defines the fields for a
     Service registry.
