@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  db:
+    build: ./db
+    container_name: castillo-db
+    image: castillo-db:1.0
+    env_file:
+      - ./db/.env
+    networks:
+      castillo-api-network:
+        aliases:
+          - db
+    ports:
+      - "40000:3306"
+      - "40001:33060"
+    volumes:
+      - type: volume
+        source: castillo-db-volume
+        target: /data/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      start_period: 10s
+      timeout: 4s
+      retries: 3
+
+networks:
+  castillo-api-network:
+    name: castillo-api-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 128.10.10.0/24
+
+volumes:
+  castillo-db-volume:
+    name: castillo-db-volume
