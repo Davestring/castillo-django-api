@@ -2,7 +2,7 @@
 
 from rest_framework import serializers
 
-from ..service.models import Service
+from ..service.models import ServiceModel
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -32,6 +32,6 @@ class ServiceSerializer(serializers.ModelSerializer):
 
         fields = "__all__"
 
-        model = Service
+        model = ServiceModel
 
         read_only_fields = ("id", "createdAt", "updatedAt")
