@@ -21,9 +21,9 @@ class WiFiModel(models.Model):
         True if the wifi network is active, otherwise False.
     house : ForeignKey
         Relation between wifi and houses.
-    createdAt : DateField
+    created : DateField
         Date when the network information was created.
-    updatedAt : DateField
+    updated : DateField
         Date when the network information was updated.
 
     """
@@ -36,8 +36,16 @@ class WiFiModel(models.Model):
         HouseModel, on_delete=models.CASCADE, default=None
     )
 
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """__str__.
+
+        Object representation in string format.
+
+        """
+        return self.name
 
     class Meta:
         """Meta.
@@ -48,7 +56,15 @@ class WiFiModel(models.Model):
         ----------
         db_table : str
             The name of the database table to use for the model.
+        verbose_name : str
+            Custom model name.
+        verbose_name_plural : str
+            Custom model plural name.
 
         """
 
         db_table = "wifi"
+
+        verbose_name = "WiFi"
+
+        verbose_name_plural = "WiFi Networks"
