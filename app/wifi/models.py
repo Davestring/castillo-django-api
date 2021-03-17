@@ -1,32 +1,41 @@
-"""Service models module."""
+"""WiFi models module."""
 
 from django.db import models
 
+from ..house.models import HouseModel
 
-class ServiceModel(models.Model):
-    """ServiceModel.
+
+class WiFiModel(models.Model):
+    """WiFiModel.
 
     Extends the Model class from models package and defines the fields for a
-    Service registry.
+    WiFi registry.
 
     Attributes
     ----------
-    title : CharField
-        Service title.
-    description : TextField
-        Service description.
+    name : CharField
+        Name of the WiFi network.
+    password : CharField
+        Password of the WiFi network.
     active : BooleanField
-        True if the service is active, otherwise False.
+        True if the wifi network is active, otherwise False.
+    house : ForeignKey
+        Relation between wifi and houses.
     created : DateField
-        Date when the service was created.
+        Date when the network information was created.
     updated : DateField
-        Date when the services was updated.
+        Date when the network information was updated.
 
     """
 
-    title = models.CharField(max_length=128, unique=True)
-    description = models.TextField(blank=True)
+    name = models.CharField(max_length=64)
+    password = models.CharField(max_length=64)
     active = models.BooleanField(default=True)
+
+    house = models.ForeignKey(
+        HouseModel, on_delete=models.CASCADE, default=None
+    )
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -36,7 +45,7 @@ class ServiceModel(models.Model):
         Object representation in string format.
 
         """
-        return self.title
+        return self.name
 
     class Meta:
         """Meta.
@@ -54,8 +63,8 @@ class ServiceModel(models.Model):
 
         """
 
-        db_table = "service"
+        db_table = "wifi"
 
-        verbose_name = "Service"
+        verbose_name = "WiFi"
 
-        verbose_name_plural = "Services"
+        verbose_name_plural = "WiFi Networks"

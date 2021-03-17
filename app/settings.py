@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "app.address",
+    "app.comment",
+    "app.house",
     "app.service",
+    "app.wifi",
 ]
 
 MIDDLEWARE = [

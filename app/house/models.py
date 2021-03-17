@@ -1,22 +1,31 @@
-"""Service models module."""
+"""House models module."""
 
 from django.db import models
 
+from ..address.models import AddressModel
+from ..service.models import ServiceModel
 
-class ServiceModel(models.Model):
-    """ServiceModel.
+
+class HouseModel(models.Model):
+    """HouseModel.
 
     Extends the Model class from models package and defines the fields for a
-    Service registry.
+    House registry.
 
     Attributes
     ----------
     title : CharField
-        Service title.
-    description : TextField
-        Service description.
+        House meta title, this field should be unique.
+    description : CharField
+        House meta description.
+    rating : FloatField
+        House rating, default value its 0.
     active : BooleanField
-        True if the service is active, otherwise False.
+        True if the house is active, otherwise False.
+    address : OneToManyField
+        References the AddressModel and attach an address to the house.
+    services : ManyToManyField
+        Creates an intermediate table for houses and services.
     created : DateField
         Date when the service was created.
     updated : DateField
@@ -25,8 +34,13 @@ class ServiceModel(models.Model):
     """
 
     title = models.CharField(max_length=128, unique=True)
-    description = models.TextField(blank=True)
+    description = models.TextField()
+    rating = models.FloatField(default=0.0)
     active = models.BooleanField(default=True)
+
+    address = models.OneToOneField(AddressModel, on_delete=models.CASCADE)
+    services = models.ManyToManyField(ServiceModel)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -54,8 +68,8 @@ class ServiceModel(models.Model):
 
         """
 
-        db_table = "service"
+        db_table = "house"
 
-        verbose_name = "Service"
+        verbose_name = "House"
 
-        verbose_name_plural = "Services"
+        verbose_name_plural = "Houses"
