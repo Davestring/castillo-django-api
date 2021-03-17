@@ -21,9 +21,9 @@ class CommentModel(models.Model):
         Commet itself.
     active : BooleanField
         True if the comment is active, otherwise False.
-    createdAt : DateField
+    created : DateField
         Date when the comment was created.
-    updatedAt : DateField
+    updated : DateField
         Date when the comment was updated.
 
     """
@@ -37,10 +37,27 @@ class CommentModel(models.Model):
         HouseModel, on_delete=models.CASCADE, default=None
     )
 
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        """Meta."""
+        """Meta.
+
+        Model meta options.
+
+        Attributes
+        ----------
+        db_table : str
+            The name of the database table to use for the model.
+        verbose_name : str
+            Custom model name.
+        verbose_name_plural : str
+            Custom model plural name.
+
+        """
 
         db_table = "commet"
+
+        verbose_name = "Comment"
+
+        verbose_name_plural = "Comments"
