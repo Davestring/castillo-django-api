@@ -21,7 +21,7 @@ class HouseModel(models.Model):
     rating : FloatField
         House rating, default value its 0.
     active : BooleanField
-        True if the service is active, otherwise False.
+        True if the house is active, otherwise False.
     address : OneToManyField
         References the AddressModel and attach an address to the house.
     services : ManyToManyField
@@ -38,14 +38,11 @@ class HouseModel(models.Model):
     rating = models.FloatField(default=0.0)
     active = models.BooleanField(default=True)
 
-    address = models.OneToOneField(
-        AddressModel, on_delete=models.CASCADE, primary_key=True
-    )
+    address = models.OneToOneField(AddressModel, on_delete=models.CASCADE)
+    services = models.ManyToManyField(ServiceModel)
 
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-
-    services = models.ManyToManyField(ServiceModel)
 
     class Meta:
         """Meta.
