@@ -52,7 +52,7 @@ class AddressModel(models.Model):
 
         """
         return (
-            f"{self.street} {self.number} {self.colony}, {self.zipCode}"
+            f"{self.street} {self.number} {self.colony}, {self.zipCode} "
             f"{self.municipality}, {self.state}"
         )
 
