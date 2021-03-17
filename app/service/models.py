@@ -17,9 +17,9 @@ class ServiceModel(models.Model):
         Service description.
     active : BooleanField
         True if the service is active, otherwise False.
-    createdAt : DateField
+    created : DateField
         Date when the service was created.
-    updatedAt : DateField
+    updated : DateField
         Date when the services was updated.
 
     """
@@ -27,8 +27,16 @@ class ServiceModel(models.Model):
     title = models.CharField(max_length=128, unique=True)
     description = models.TextField(blank=True)
     active = models.BooleanField(default=True)
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """__str__.
+
+        Object representation in string format.
+
+        """
+        return self.title
 
     class Meta:
         """Meta.
@@ -39,7 +47,15 @@ class ServiceModel(models.Model):
         ----------
         db_table : str
             The name of the database table to use for the model.
+        verbose_name : str
+            Custom model name.
+        verbose_name_plural : str
+            Custom model plural name.
 
         """
 
         db_table = "service"
+
+        verbose_name = "Service"
+
+        verbose_name_plural = "Services"

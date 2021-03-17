@@ -34,4 +34,4 @@ class ServiceSerializer(serializers.ModelSerializer):
 
         model = ServiceModel
 
-        read_only_fields = ("id", "createdAt", "updatedAt")
+        read_only_fields = ("id", "created", "updated")
