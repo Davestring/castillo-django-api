@@ -27,9 +27,9 @@ class AddressModel(models.Model):
         Country where the property is located, default is `MX`.
     references : TextField
         Property references, it will help to locate the property more easier.
-    createdAt : DateField
+    created : DateField
         Date when the registry was created.
-    updatedAt : DateField
+    updated : DateField
         Date when the registry was updated.
 
     """
@@ -42,8 +42,19 @@ class AddressModel(models.Model):
     state = models.CharField(max_length=64)
     country = models.CharField(max_length=2, default="MX")
     references = models.TextField(blank=True)
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """__str__.
+
+        Object representation in string format.
+
+        """
+        return (
+            f"{self.street} {self.number} {self.colony}, {self.zipCode}"
+            f"{self.municipality}, {self.state}"
+        )
 
     class Meta:
         """Meta.
@@ -54,7 +65,15 @@ class AddressModel(models.Model):
         ----------
         db_table : str
             The name of the database table to use for the model.
+        verbose_name : str
+            Custom model name.
+        verbose_name_plural : str
+            Custom model plural name.
 
         """
 
         db_table = "address"
+
+        verbose_name = "Address"
+
+        verbose_name_plural = "Addresses"
