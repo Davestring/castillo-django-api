@@ -26,9 +26,9 @@ class HouseModel(models.Model):
         References the AddressModel and attach an address to the house.
     services : ManyToManyField
         Creates an intermediate table for houses and services.
-    createdAt : DateField
+    created : DateField
         Date when the service was created.
-    updatedAt : DateField
+    updated : DateField
         Date when the services was updated.
 
     """
@@ -41,8 +41,16 @@ class HouseModel(models.Model):
     address = models.OneToOneField(AddressModel, on_delete=models.CASCADE)
     services = models.ManyToManyField(ServiceModel)
 
-    createdAt = models.DateTimeField(auto_now_add=True)
-    updatedAt = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """__str__.
+
+        Object representation in string format.
+
+        """
+        return self.title
 
     class Meta:
         """Meta.
@@ -53,7 +61,15 @@ class HouseModel(models.Model):
         ----------
         db_table : str
             The name of the database table to use for the model.
+        verbose_name : str
+            Custom model name.
+        verbose_name_plural : str
+            Custom model plural name.
 
         """
 
         db_table = "house"
+
+        verbose_name = "House"
+
+        verbose_name_plural = "Houses"
