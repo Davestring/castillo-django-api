@@ -16,7 +16,7 @@ class ServiceList(ListCreateAPIView):
 
     Attributes
     ----------
-    queryset : BaseManager
+    queryset : QuerySet
         The queryset that should be used for returning objects from this view.
     serializer_class : HouseSerializer
         Used for validating, deserializing input and for serializing output.

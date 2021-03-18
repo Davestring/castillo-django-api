@@ -1,18 +1,15 @@
 """Comment views module."""
 
-from rest_framework.generics import (
-    ListCreateAPIView,
-    RetrieveUpdateDestroyAPIView,
-)
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from ..comment.models import CommentModel
 from ..comment.serializers import CommentSerializer
 
 
-class CommentList(ListCreateAPIView):
+class CommentList(ListAPIView):
     """CommentList.
 
-    Concrete views for listing and creating a model instance.
+    Concrete views for listing a model instance.
 
     Attributes
     ----------
@@ -28,10 +25,10 @@ class CommentList(ListCreateAPIView):
     serializer_class = CommentSerializer
 
 
-class CommentDetail(RetrieveUpdateDestroyAPIView):
+class CommentDetail(RetrieveAPIView):
     """CommentDetail.
 
-    Concrete views for retrieve, update and delete a model instance.
+    Concrete views for retrieve a model instance.
 
     Attributes
     ----------

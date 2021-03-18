@@ -1,22 +1,19 @@
 """WiFi views module."""
 
-from rest_framework.generics import (
-    ListCreateAPIView,
-    RetrieveUpdateDestroyAPIView,
-)
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from ..wifi.models import WiFiModel
 from ..wifi.serializers import WiFiSerializer
 
 
-class WiFiList(ListCreateAPIView):
+class WiFiList(ListAPIView):
     """WiFiList.
 
-    Concrete views for listing and creating a model instance.
+    Concrete views for listing a model instance.
 
     Attributes
     ----------
-    queryset : BaseManager
+    queryset : QuerySet
         The queryset that should be used for returning objects from this view.
     serializer_class : HouseSerializer
         Used for validating, deserializing input and for serializing output.
@@ -28,10 +25,10 @@ class WiFiList(ListCreateAPIView):
     serializer_class = WiFiSerializer
 
 
-class WiFiDetail(RetrieveUpdateDestroyAPIView):
+class WiFiDetail(RetrieveAPIView):
     """WiFiDetail.
 
-    Concrete views for retrieve, update and delete a model instance.
+    Concrete views for retrieve a model instance.
 
     Attributes
     ----------
