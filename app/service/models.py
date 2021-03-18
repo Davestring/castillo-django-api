@@ -2,6 +2,8 @@
 
 from django.db import models
 
+from ..house.models import HouseModel
+
 
 class ServiceModel(models.Model):
     """ServiceModel.
@@ -25,10 +27,16 @@ class ServiceModel(models.Model):
     """
 
     title = models.CharField(max_length=128, unique=True)
+
     description = models.TextField(blank=True)
+
     active = models.BooleanField(default=True)
+
     created = models.DateTimeField(auto_now_add=True)
+
     updated = models.DateTimeField(auto_now=True)
+
+    houses = models.ManyToManyField(HouseModel, related_name="services")
 
     def __str__(self):
         """__str__.

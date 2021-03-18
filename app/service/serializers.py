@@ -2,6 +2,7 @@
 
 from rest_framework import serializers
 
+from ..house.models import HouseModel
 from ..service.models import ServiceModel
 
 
@@ -13,6 +14,10 @@ class ServiceSerializer(serializers.ModelSerializer):
 
     """
 
+    # houses = serializers.PrimaryKeyRelatedField(
+    #     queryset=HouseModel.objects.all(), many=True
+    # )
+
     class Meta:
         """Meta.
 
@@ -21,8 +26,8 @@ class ServiceSerializer(serializers.ModelSerializer):
 
         Attributes
         ----------
-        fields : str
-            Fields that should be included in the serializer.
+        exclude : str
+            Fields that should be excluded in the serializer.
         model : Service
             Model from where the serializer will retrieve information.
         read_only_fields : Tuple
@@ -30,7 +35,7 @@ class ServiceSerializer(serializers.ModelSerializer):
 
         """
 
-        fields = "__all__"
+        exclude = ("houses",)
 
         model = ServiceModel
 
