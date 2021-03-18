@@ -5,6 +5,30 @@ from django.utils.translation import gettext as _
 
 from ..house.models import HouseModel
 from ..wifi.models import WiFiModel
+from ..service.models import ServiceModel
+
+
+class ServiceInline(admin.StackedInline):
+    """ServiceInline.
+
+    Edit the Service model in the House admin page.
+
+    Attributes
+    ----------
+    model : WiFiModel
+        The model which the inline is using.
+    extra : int
+        Number of extra forms to display in addition to the initial forms.
+    min_num : int
+        Minimum number of forms to show in the inline.
+
+    """
+
+    model = ServiceModel.houses.through
+
+    extra = 0
+
+    min_num = 1
 
 
 class WiFiInline(admin.TabularInline):
@@ -38,6 +62,7 @@ class WiFiInline(admin.TabularInline):
     max_num = 5
 
 
+@admin.register(ServiceModel)
 class HouseAdmin(admin.ModelAdmin):
     """HouseAdmin.
 
@@ -56,7 +81,7 @@ class HouseAdmin(admin.ModelAdmin):
 
     """
 
-    inlines = (WiFiInline,)
+    inlines = (ServiceInline,)
 
     ordering = ("id",)
 
@@ -74,7 +99,6 @@ class HouseAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("title",)}),
         (_("House Description"), {"fields": ("description",)}),
-        (_("House Services"), {"fields": ("services",)}),
         (_("House Address"), {"fields": ("address",)}),
         (_("Is house active?"), {"fields": ("active",)}),
     )

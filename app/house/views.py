@@ -1,16 +1,16 @@
-"""Service views module."""
+"""House views module."""
 
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 
-from ..service.models import ServiceModel
-from ..service.serializers import ServiceSerializer
+from ..house.models import HouseModel
+from ..house.serializers import HouseSerializer
 
 
-class ServiceList(ListCreateAPIView):
-    """ServiceList.
+class HouseList(ListCreateAPIView):
+    """HouseList.
 
     Concrete views for listing and creating a model instance.
 
@@ -23,13 +23,13 @@ class ServiceList(ListCreateAPIView):
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = HouseModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = HouseSerializer
 
 
-class ServiceDetail(RetrieveUpdateDestroyAPIView):
-    """ServiceDetail.
+class HouseDetail(RetrieveUpdateDestroyAPIView):
+    """HouseDetail.
 
     Concrete views for retrieve, update and delete a model instance.
 
@@ -42,6 +42,6 @@ class ServiceDetail(RetrieveUpdateDestroyAPIView):
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = HouseModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = HouseSerializer

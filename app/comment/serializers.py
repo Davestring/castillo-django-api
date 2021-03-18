@@ -1,14 +1,14 @@
-"""Address serializers module."""
+"""Comment serializers module."""
 
 from rest_framework.serializers import ModelSerializer
 
-from ..address.models import AddressModel
+from ..comment.models import CommentModel
 
 
-class AddressSerializer(ModelSerializer):
-    """AddressSerializer.
+class CommentSerializer(ModelSerializer):
+    """CommentSerializer.
 
-    Extends from ModelSerializer and convert a queryset of the AddressModel
+    Extends from ModelSerializer and convert a queryset of the CommentModel
     class into a native python datatype.
 
     """
@@ -16,7 +16,7 @@ class AddressSerializer(ModelSerializer):
     class Meta:
         """Meta.
 
-        Inner Meta class of AddressSerializer, it will allow to add custom
+        Inner Meta class of CommentSerializer, it will allow to add custom
         rules to the serialized information.
 
         Attributes
@@ -32,6 +32,6 @@ class AddressSerializer(ModelSerializer):
 
         fields = "__all__"
 
-        model = AddressModel
+        model = CommentModel
 
-        read_only_fields = ("id", "created", "updated")
+        read_only_fields = ("id", "comment", "created", "updated")

@@ -1,23 +1,20 @@
-"""Address serializers module."""
+"""WiFi serializers module."""
 
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
-from ..address.models import AddressModel
+from ..wifi.models import WiFiModel
 
 
-class AddressSerializer(ModelSerializer):
-    """AddressSerializer.
+class WiFiSerializer(serializers.ModelSerializer):
+    """WiFiSerializer.
 
-    Extends from ModelSerializer and convert a queryset of the AddressModel
+    Extends from ModelSerializer and convert a queryset of the WiFiSerializer
     class into a native python datatype.
 
     """
 
     class Meta:
         """Meta.
-
-        Inner Meta class of AddressSerializer, it will allow to add custom
-        rules to the serialized information.
 
         Attributes
         ----------
@@ -30,8 +27,8 @@ class AddressSerializer(ModelSerializer):
 
         """
 
-        fields = "__all__"
+        fields = ("id", "name", "password", "active", "created", "updated")
 
-        model = AddressModel
+        model = WiFiModel
 
         read_only_fields = ("id", "created", "updated")

@@ -3,7 +3,6 @@
 from django.db import models
 
 from ..address.models import AddressModel
-from ..service.models import ServiceModel
 
 
 class HouseModel(models.Model):
@@ -34,15 +33,20 @@ class HouseModel(models.Model):
     """
 
     title = models.CharField(max_length=128, unique=True)
+
     description = models.TextField()
+
     rating = models.FloatField(default=0.0)
+
     active = models.BooleanField(default=True)
 
-    address = models.OneToOneField(AddressModel, on_delete=models.CASCADE)
-    services = models.ManyToManyField(ServiceModel)
-
     created = models.DateTimeField(auto_now_add=True)
+
     updated = models.DateTimeField(auto_now=True)
+
+    address = models.OneToOneField(
+        AddressModel, on_delete=models.CASCADE, related_name="address"
+    )
 
     def __str__(self):
         """__str__.

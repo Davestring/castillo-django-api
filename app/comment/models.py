@@ -29,16 +29,23 @@ class CommentModel(models.Model):
     """
 
     name = models.CharField(max_length=64)
+
     lastname = models.CharField(max_length=64)
+
     comment = models.TextField(blank=False)
+
     active = models.BooleanField(default=True)
 
-    house = models.ForeignKey(
-        HouseModel, on_delete=models.CASCADE, default=None
-    )
-
     created = models.DateTimeField(auto_now_add=True)
+
     updated = models.DateTimeField(auto_now=True)
+
+    house = models.ForeignKey(
+        HouseModel,
+        default=None,
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
 
     class Meta:
         """Meta.

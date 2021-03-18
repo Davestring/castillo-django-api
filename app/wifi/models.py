@@ -29,15 +29,18 @@ class WiFiModel(models.Model):
     """
 
     name = models.CharField(max_length=64)
+
     password = models.CharField(max_length=64)
+
     active = models.BooleanField(default=True)
 
-    house = models.ForeignKey(
-        HouseModel, on_delete=models.CASCADE, default=None
-    )
-
     created = models.DateTimeField(auto_now_add=True)
+
     updated = models.DateTimeField(auto_now=True)
+
+    house = models.ForeignKey(
+        HouseModel, default=None, on_delete=models.CASCADE, related_name="wifi"
+    )
 
     def __str__(self):
         """__str__.

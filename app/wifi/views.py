@@ -1,16 +1,16 @@
-"""Service views module."""
+"""WiFi views module."""
 
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 
-from ..service.models import ServiceModel
-from ..service.serializers import ServiceSerializer
+from ..wifi.models import WiFiModel
+from ..wifi.serializers import WiFiSerializer
 
 
-class ServiceList(ListCreateAPIView):
-    """ServiceList.
+class WiFiList(ListCreateAPIView):
+    """WiFiList.
 
     Concrete views for listing and creating a model instance.
 
@@ -23,13 +23,13 @@ class ServiceList(ListCreateAPIView):
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = WiFiModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = WiFiSerializer
 
 
-class ServiceDetail(RetrieveUpdateDestroyAPIView):
-    """ServiceDetail.
+class WiFiDetail(RetrieveUpdateDestroyAPIView):
+    """WiFiDetail.
 
     Concrete views for retrieve, update and delete a model instance.
 
@@ -42,6 +42,6 @@ class ServiceDetail(RetrieveUpdateDestroyAPIView):
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = WiFiModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = WiFiSerializer

@@ -1,35 +1,35 @@
-"""Service views module."""
+"""Comment views module."""
 
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 
-from ..service.models import ServiceModel
-from ..service.serializers import ServiceSerializer
+from ..comment.models import CommentModel
+from ..comment.serializers import CommentSerializer
 
 
-class ServiceList(ListCreateAPIView):
-    """ServiceList.
+class CommentList(ListCreateAPIView):
+    """CommentList.
 
     Concrete views for listing and creating a model instance.
 
     Attributes
     ----------
-    queryset : BaseManager
+    queryset : QuerySet
         The queryset that should be used for returning objects from this view.
-    serializer_class : HouseSerializer
+    serializer_class : AddressSerializer
         Used for validating, deserializing input and for serializing output.
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = CommentModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = CommentSerializer
 
 
-class ServiceDetail(RetrieveUpdateDestroyAPIView):
-    """ServiceDetail.
+class CommentDetail(RetrieveUpdateDestroyAPIView):
+    """CommentDetail.
 
     Concrete views for retrieve, update and delete a model instance.
 
@@ -42,6 +42,6 @@ class ServiceDetail(RetrieveUpdateDestroyAPIView):
 
     """
 
-    queryset = ServiceModel.objects.all()
+    queryset = CommentModel.objects.all()
 
-    serializer_class = ServiceSerializer
+    serializer_class = CommentSerializer
