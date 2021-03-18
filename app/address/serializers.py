@@ -34,4 +34,4 @@ class AddressSerializer(ModelSerializer):
 
         model = AddressModel
 
-        read_only_fields = ["id", "created", "updated"]
+        read_only_fields = ("id", "created", "updated")
