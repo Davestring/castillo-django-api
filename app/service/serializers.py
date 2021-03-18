@@ -2,7 +2,6 @@
 
 from rest_framework import serializers
 
-from ..house.models import HouseModel
 from ..service.models import ServiceModel
 
 
@@ -13,10 +12,6 @@ class ServiceSerializer(serializers.ModelSerializer):
     into a native python datatype.
 
     """
-
-    # houses = serializers.PrimaryKeyRelatedField(
-    #     queryset=HouseModel.objects.all(), many=True
-    # )
 
     class Meta:
         """Meta.
