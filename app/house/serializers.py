@@ -4,8 +4,6 @@ from rest_framework import serializers
 
 from ..address.serializers import AddressSerializer
 from ..house.models import HouseModel
-from ..service.serializers import ServiceSerializer
-from ..wifi.serializers import WiFiSerializer
 
 
 class HouseSerializer(serializers.ModelSerializer):
@@ -17,10 +15,6 @@ class HouseSerializer(serializers.ModelSerializer):
     """
 
     address = AddressSerializer(read_only=False)
-
-    services = ServiceSerializer(many=True, read_only=True)
-
-    wifi = WiFiSerializer(many=True, read_only=True)
 
     class Meta:
         """Meta.
@@ -46,8 +40,8 @@ class HouseSerializer(serializers.ModelSerializer):
             "rating",
             "active",
             "address",
-            "services",
-            "wifi",
+            "created",
+            "updated",
         )
 
         model = HouseModel
