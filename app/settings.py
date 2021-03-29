@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "app.address",
     "app.comment",
     "app.house",
+    "app.insight",
     "app.service",
     "app.wifi",
 ]
