@@ -37,6 +37,7 @@ class HouseSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "description",
+            "cover",
             "rating",
             "active",
             "address",
