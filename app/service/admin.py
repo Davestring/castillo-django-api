@@ -3,7 +3,6 @@
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
-from ..house.models import HouseModel
 from ..service.models import ServiceModel
 
 
@@ -43,3 +42,6 @@ class ServiceAdmin(admin.ModelAdmin):
         (_("Service Description"), {"fields": ("description",)}),
         (_("Is service active?"), {"fields": ("active",)}),
     )
+
+
+admin.site.register(ServiceModel, ServiceAdmin)
