@@ -17,7 +17,7 @@ class InsightModel(models.Model):
         Insight optional caption text.
     summary : TextField
         Insight description.
-    image : TextField
+    cover : TextField
         Insight base64 image.
     created : DateField
         Date when the service was created.
@@ -32,7 +32,7 @@ class InsightModel(models.Model):
 
     summary = models.TextField()
 
-    image = models.TextField()
+    cover = models.TextField()
 
     created = models.DateTimeField(auto_now_add=True)
 
