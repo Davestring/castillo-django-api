@@ -17,6 +17,8 @@ class HouseModel(models.Model):
         House meta title, this field should be unique.
     description : CharField
         House meta description.
+    cover : TextField
+        House cover image in base64.
     rating : FloatField
         House rating, default value its 0.
     active : BooleanField
@@ -35,6 +37,8 @@ class HouseModel(models.Model):
     title = models.CharField(max_length=128, unique=True)
 
     description = models.TextField()
+
+    cover = models.TextField(default=None)
 
     rating = models.FloatField(default=0.0)
 
