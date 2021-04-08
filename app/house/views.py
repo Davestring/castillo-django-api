@@ -4,6 +4,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response
 
 from ..comment.serializers import CommentSerializer
+from ..gallery.serializers import GallerySerializer
 from ..house.models import HouseModel
 from ..house.serializers import HouseSerializer
 from ..service.serializers import ServiceSerializer
@@ -72,6 +73,33 @@ class HouseCommentsList(ListAPIView):
         instance = self.get_object()
         comments = instance.comments.all()
         serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+
+class HouseGalleryList(ListAPIView):
+    """HouseGallery.
+
+    Concrete views for listing a House model instance and get the gallery
+    that belongs to that instance.
+
+    Attributes
+    ----------
+    queryset : QuerySet
+        The queryset that should be used for returning objects from this view.
+    serializer_class : HouseSerializer
+        Used for validating, deserializing input and for serializing output.
+
+    """
+
+    queryset = HouseModel.objects.all()
+
+    serializer_class = HouseSerializer
+
+    def get(self, request, *args, **kwargs):
+        """GET Request."""
+        instance = self.get_object()
+        gallery = instance.gallery.all()
+        serializer = GallerySerializer(gallery, many=True)
         return Response(serializer.data)
 
 
