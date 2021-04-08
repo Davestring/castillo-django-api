@@ -3,6 +3,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext as _
 
+from ..gallery.models import GalleryModel
 from ..house.models import HouseModel
 from ..wifi.models import WiFiModel
 
@@ -30,6 +31,35 @@ from ..wifi.models import WiFiModel
 #     extra = 0
 
 #     min_num = 1
+
+
+class GalleryInline(admin.TabularInline):
+    """GalleryInline.
+
+    Edit the Gallery model in the House admin page.
+
+    Attributes
+    ----------
+    model : GalleryModel
+        The model which the inline is using.
+    exclude : tuple
+        Fields to exclude of editting of the child model.
+    extra : int
+        Number of extra forms to display in addition to the initial forms.
+    min_num : int
+        Minimum number of forms to show in the inline.
+    max_num : int
+        Maximum number of forms to show in the inline.
+
+    """
+
+    model = GalleryModel
+
+    extra = 0
+
+    min_num = 1
+
+    max_num = 5
 
 
 class WiFiInline(admin.TabularInline):
@@ -83,6 +113,7 @@ class HouseAdmin(admin.ModelAdmin):
     """
 
     # inlines = (ServiceInline, WifiInline)
+    inlines = (GalleryInline,)
 
     ordering = ("id",)
 
@@ -100,6 +131,11 @@ class HouseAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("title",)}),
         (_("House Description"), {"fields": ("description",)}),
+        (
+            _("House Information"),
+            {"fields": ("beds", "bathrooms", "rooms", "guests")},
+        ),
+        (_("House Price"), {"fields": ("price",)}),
         (_("House Address"), {"fields": ("address",)}),
         (_("Is house active?"), {"fields": ("active",)}),
     )

@@ -6,6 +6,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from ..house.views import (
     HouseCommentsList,
     HouseDetail,
+    HouseGalleryList,
     HouseList,
     HouseServicesList,
     HouseWiFiList,
@@ -18,6 +19,11 @@ urlpatterns = [
         "<int:pk>/comments/",
         HouseCommentsList.as_view(),
         name="house-comments-list",
+    ),
+    path(
+        "<int:pk>/gallery/",
+        HouseGalleryList.as_view(),
+        name="house-gallery-list",
     ),
     path(
         "<int:pk>/services/",
