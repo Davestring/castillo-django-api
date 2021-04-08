@@ -19,6 +19,16 @@ class HouseModel(models.Model):
         House meta description.
     cover : TextField
         House cover image in base64.
+    rooms : IntegerField
+        Number of rooms of the property.
+    beds : IntegerField
+        Number of beds available in the property.
+    bathrooms : IntegerField
+        Number of bathrooms in the property.
+    guests : IntegerField
+        Max number of guests that the property can host.
+    price : IntegerField
+        Property rental price.
     rating : FloatField
         House rating, default value its 0.
     active : BooleanField
@@ -39,6 +49,16 @@ class HouseModel(models.Model):
     description = models.TextField()
 
     cover = models.TextField(default=None)
+
+    rooms = models.IntegerField(default=0)
+
+    beds = models.IntegerField(default=0)
+
+    bathrooms = models.IntegerField(default=0)
+
+    guests = models.IntegerField(default=0)
+
+    price = models.FloatField(default=0)
 
     rating = models.FloatField(default=0.0)
 
