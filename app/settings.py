@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "app.address",
     "app.comment",
+    "app.gallery",
     "app.house",
     "app.insight",
     "app.service",
