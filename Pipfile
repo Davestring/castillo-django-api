@@ -8,6 +8,7 @@ django = "==4.0.4"
 djangorestframework = "==3.13.1"
 django-filter = "==21.1"
 mysqlclient = "==2.1.0"
+djangorestframework-api-key = "==2.2.0"
 
 [dev-packages]
 pycodestyle = "*"
