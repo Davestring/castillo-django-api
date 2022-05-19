@@ -2,6 +2,8 @@
 
 from typing import List
 
-from django.urls import URLPattern
+from django.urls import URLPattern, include, path
 
-urlpatterns: List[URLPattern] = []
+urlpatterns: List[URLPattern] = [
+    path("", include("app.health.urls")),
+]
