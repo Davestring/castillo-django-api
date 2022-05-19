@@ -1,7 +1,12 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==4.0.4"
+djangorestframework = "==3.13.1"
+django-filter = "==21.1"
 
 [dev-packages]
 pycodestyle = "*"
@@ -11,15 +16,9 @@ pyflakes = "*"
 bandit = "*"
 pydocstyle = "*"
 pre-commit = "*"
-black = "==19.3b0"
 flake8 = "*"
 pylint-django = "*"
-
-[packages]
-django = "*"
-djangorestframework = "*"
-mysqlclient = "*"
-django-filter = "*"
+black = "==19.3b0"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
