@@ -1,1 +1,1 @@
-"""User module."""
+"""User package initializer."""

@@ -1,33 +1,28 @@
 """Health views module."""
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_api_key.permissions import HasAPIKey
 
 
 class HealthAPIView(APIView):
-    """HealthAPIView.
-
-    Extends from APIView and retrieves the current status of the API.
+    """Extends from `APIView` and retrieves the current status of the API.
 
     Methods
     -------
     get()
-        It should retrieve an HTTP 200 status code with a dummy response for the user.
+        Retrieve an HTTP 200 status code with a dummy response for the user.
 
     """
 
     permission_classes = [HasAPIKey]
 
     def get(self, request: Response) -> Response:
-        """GET Request.
-
-        It should retrieve an HTTP 200 status code with a dummy response for the user.
+        """Retrieve an HTTP 200 status code with a dummy response for the user.
 
         Returns
         -------
         Response
-            An HTTP success ``Response`` if the server is up and running.
+            An HTTP success `Response` if the server is up and running.
 
         """
         return Response({"status": "Ok!"})

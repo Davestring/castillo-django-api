@@ -1,5 +1,4 @@
 """Django settings for app project."""
-
 import os
 from datetime import timedelta
 from typing import List

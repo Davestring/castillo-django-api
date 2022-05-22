@@ -3,9 +3,7 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class UserManager(BaseUserManager):
-    """UserManager.
-
-    Define a model manager similar to `django.contrib.auth.models.UserManager` but with no username field.
+    """Define a model manager similar to `django.contrib.auth.models.UserManager` but with no username field.
 
     Attributes
     ----------

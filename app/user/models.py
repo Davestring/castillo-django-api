@@ -4,13 +4,11 @@ from typing import List
 from django.contrib.auth.models import AbstractUser
 from django.db.models import DateTimeField, EmailField
 
-from .managers import UserManager
+from app.user.managers import UserManager
 
 
 class User(AbstractUser):
-    """User.
-
-    Extends the `AbstractUser` class from `django.contrib.auth.models` and defines the fields for an User registry.
+    """Extends the `AbstractUser` class from `django.contrib.auth.models` and defines the fields for an User registry.
 
     Attributes
     ----------

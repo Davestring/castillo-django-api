@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 
 class CatalogConfig(AppConfig):
-    """Extends from AppConfig and configure the Catalog application.
+    """Extends from `AppConfig` and configure the Catalog application.
 
     Attributes
     ----------

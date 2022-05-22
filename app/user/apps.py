@@ -3,9 +3,7 @@ from django.apps import AppConfig
 
 
 class UserConfig(AppConfig):
-    """UserConfig.
-
-    Extends from AppConfig and configure the User application.
+    """Extends from `AppConfig` and configure the User application.
 
     Attributes
     ----------

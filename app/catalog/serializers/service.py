@@ -5,10 +5,10 @@ from app.catalog.models import Service
 
 
 class ServiceSerializer(ModelSerializer):
-    """Extends from ModelSerializer and convert a queryset of the `Service` model into a native Python datatype."""
+    """Extends from `ModelSerializer` and convert a queryset of the `Service` model into a native Python datatype."""
 
     class Meta:
-        """Inner Meta class of ServiceSerializer, it will allow to add custom rules to the serialized data.
+        """Inner Meta class of `ServiceSerializer`, it will allow to add custom rules to the serialized data.
 
         Attributes
         ----------
