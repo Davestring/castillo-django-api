@@ -19,6 +19,10 @@ ALLOWED_HOSTS: List[str] = ["*"]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+DEFAULT_MAX_PAGE_SIZE = 20000
+
+DEFAULT_PAGE_SIZE = 20
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_api_key",
     "djoser",
+    "app.catalog",
     "app.user",
 ]
 
@@ -65,6 +70,11 @@ DATABASES = {
 # REST Framework settings.
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "utils.pagination.DefaultPagination",
 }
 
 
