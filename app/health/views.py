@@ -2,6 +2,7 @@
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_api_key.permissions import HasAPIKey
 
 
 class HealthAPIView(APIView):
@@ -15,6 +16,8 @@ class HealthAPIView(APIView):
         It should retrieve an HTTP 200 status code with a dummy response for the user.
 
     """
+
+    permission_classes = [HasAPIKey]
 
     def get(self, request: Response) -> Response:
         """GET Request.
