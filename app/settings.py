@@ -18,11 +18,14 @@ ALLOWED_HOSTS: List[str] = ["*"]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 DEFAULT_MAX_PAGE_SIZE = 20000
 
 DEFAULT_PAGE_SIZE = 20
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "rest_framework_api_key",
     "djoser",
