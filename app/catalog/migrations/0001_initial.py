@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
             name="Service",
             fields=[
                 ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=128, unique=True)),
+                ("description", models.TextField(blank=True, default=None, null=True)),
                 ("is_active", models.BooleanField(default=True)),
                 ("created", models.DateTimeField(auto_now_add=True)),
                 ("updated", models.DateTimeField(auto_now=True)),
-                ("name", models.CharField(max_length=128, unique=True)),
-                ("description", models.TextField(blank=True, default=None, null=True)),
             ],
             options={
                 "db_table": "service",
