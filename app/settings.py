@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_api_key",
     "djoser",
+    "app.booking",
     "app.catalog",
     "app.user",
 ]
