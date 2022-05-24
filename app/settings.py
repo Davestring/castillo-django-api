@@ -40,6 +40,18 @@ ROOT_URLCONF = "app.urls"
 WSGI_APPLICATION = "app.wsgi.application"
 
 
+# Project email settings.
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+
+
 # Project apps settings.
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -55,6 +67,7 @@ INSTALLED_APPS = [
     "rest_framework_api_key",
     "app.booking",
     "app.catalog",
+    "app.mailing",
     "app.user",
 ]
 

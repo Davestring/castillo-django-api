@@ -17,3 +17,5 @@ pipenv install
 ```bash
 pipenv run pre-commit install
 ```
+
+[Create mailing password](https://support.google.com/accounts/answer/185833?hl=es-419)
