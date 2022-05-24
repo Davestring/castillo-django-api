@@ -24,6 +24,6 @@ def mailing(request: Request) -> Response:
     if event == MailingEvents["BOOKING_SUMMARY"].name:
         message = booking_summary_email_builder(recipient)
 
-    send_mail(MailingSubjects[event].name, message, settings.EMAIL_HOST_USER, [recipient], html_message=message)
+    send_mail(MailingSubjects[event].value, message, settings.EMAIL_HOST_USER, [recipient], html_message=message)
 
     return Response(status=status.HTTP_204_NO_CONTENT)
