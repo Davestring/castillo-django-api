@@ -1,1 +1,0 @@
-"""Insight package initializer."""
