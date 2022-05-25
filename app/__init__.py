@@ -1,1 +1,1 @@
-"""App package initializer."""
+"""Castillo Casa API package initializer."""
