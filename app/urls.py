@@ -11,5 +11,6 @@ urlpatterns: List[URLPattern] = [
     path("", include("app.catalog.urls")),
     path("", include("app.health.urls")),
     path("", include("app.mailing.urls")),
+    path("", include("app.payment.urls")),
     path("docs/", SwaggerView.with_ui("redoc", cache_timeout=0), name="docs"),
 ]

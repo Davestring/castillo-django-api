@@ -129,6 +129,12 @@ SIMPLE_JWT = {
 }
 
 
+# Stripe settings.
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")
+
+STRIPE_CURRENCY = "MXN"
+
+
 # Other settings.
 ADMIN_ENABLED = False
 

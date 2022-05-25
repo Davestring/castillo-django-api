@@ -1,9 +1,9 @@
 """Mailing builders module."""
+from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 
 from app.booking.models import Booking, Guest
 from app.mailing.utils.functools import get_user_fullname
-from utils import NotFound
 
 
 def booking_summary_email_builder(guest_email: str) -> str:
@@ -15,10 +15,7 @@ def booking_summary_email_builder(guest_email: str) -> str:
         Guest's email address that will help to find its latest reservation information.
 
     """
-    guest = Guest.objects.filter(email=guest_email).first()
-
-    if guest is None:
-        raise NotFound
+    guest = get_object_or_404(Guest, email=guest_email)
 
     booking = Booking.objects.filter(guest__email=guest_email).order_by("-check_in").first()
 
