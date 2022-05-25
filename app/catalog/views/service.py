@@ -12,6 +12,6 @@ class ServiceViewSet(ModelViewSet):
 
     filterset_fields = {"is_active": ["exact"], "name": ["contains", "exact"]}
     ordering_fields = ("id", "name")
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly & HasAPIKey]
+    permission_classes = [HasAPIKey, DjangoModelPermissionsOrAnonReadOnly]
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer

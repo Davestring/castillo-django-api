@@ -1,10 +1,10 @@
 """Booking views model."""
-from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_api_key.permissions import HasAPIKey
 
 from app.booking.models import Booking
 from app.booking.serializers import BookingSerializer
+from utils import IsAuthenticatedOrReadCreateOnly
 
 
 class BookingViewSet(ModelViewSet):
@@ -17,6 +17,6 @@ class BookingViewSet(ModelViewSet):
         "is_active": ["exact"],
     }
     ordering_fields = ("check_in", "check_out", "id")
-    permission_classes = [DjangoModelPermissionsOrAnonReadOnly & HasAPIKey]
+    permission_classes = [HasAPIKey, IsAuthenticatedOrReadCreateOnly]
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
