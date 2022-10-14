@@ -2,6 +2,7 @@
 import os
 from datetime import timedelta
 from typing import List
+import dj_database_url
 
 # Load environment variables.
 ACCESS_TOKEN_LIFETIME = float(os.environ.get("ACCESS_TOKEN_LIFETIME", "5"))
@@ -87,14 +88,7 @@ INSTALLED_APPS = [
 
 # Database settings.
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": os.environ.get("DB_HOST"),
-        "NAME": os.environ.get("DB_NAME"),
-        "PASSWORD": os.environ.get("DB_PASS"),
-        "PORT": os.environ.get("DB_PORT"),
-        "USER": os.environ.get("DB_USER"),
-    }
+    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL")),
 }
 
 
