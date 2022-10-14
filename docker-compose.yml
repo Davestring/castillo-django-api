@@ -2,38 +2,32 @@ version: "3.7"
 
 services:
   db:
-    build: ./db
-    container_name: castillo_casa-db
-    env_file:
-      - ./db/.env
-    image: castillo_casa-db:1.0
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 5s
-      start_period: 10s
-      timeout: 4s
-      retries: 3
+    container_name: casa_castillo_db
+    environment:
+        - POSTGRES_PASSWORD=iUFXkPr7_!nm98EY
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=casa-castillo
+    image: postgres:14
     networks:
-      castillo_casa-network:
+      casa_castillo:
         aliases:
-          - castillo_casa-db
+          - db
     ports:
-      - "40000:3306"
-      - "40001:33060"
+      - "40000:5432"
+      - "40001:5432"
     volumes:
       - type: volume
-        source: castillo_casa-db-volume
-        target: /data/mysql
-
+        source: db_volume
+        target: /var/lib/postgresql/data
 
 networks:
-  castillo_casa-network:
+  casa_castillo:
     driver: bridge
     ipam:
       config:
         - subnet: 168.10.10.0/24
-    name: castillo_casa-network
+    name: casa_castillo_network
 
 volumes:
-  castillo_casa-db-volume:
-    name: castillo_casa-db-volume
+  db_volume:
+    name: casa_castillo_db_volume
