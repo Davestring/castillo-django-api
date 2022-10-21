@@ -119,8 +119,26 @@ PASSWORD_HASHERS = [
 # User settings.
 AUTH_USER_MODEL = "user.User"
 
+DJOSER_DEFAULT_PERMISSIONS = [
+    "rest_framework_api_key.permissions.HasAPIKey",
+    "rest_framework.permissions.IsAdminUser",
+]
+
 DJOSER = {
+    "HIDE_USERS": False,
+    "PERMISSIONS": {
+        "user": DJOSER_DEFAULT_PERMISSIONS,
+        "user_create": DJOSER_DEFAULT_PERMISSIONS,
+        "user_delete": DJOSER_DEFAULT_PERMISSIONS,
+        "user_list": DJOSER_DEFAULT_PERMISSIONS,
+    },
     "SEND_ACTIVATION_EMAIL": False,
+    "SERIALIZERS": {
+        "current_user": "app.user.serializers.UserSerializer",
+        "user": "app.user.serializers.UserSerializer",
+        "user_create": "app.user.serializers.UserCreateSerializer",
+        "user_list": "app.user.serializers.UserSerializer",
+    },
 }
 
 
