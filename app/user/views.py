@@ -11,13 +11,12 @@ class UserViewSet(BaseUserViewSet):
 
     filterset_fields = {
         "email": ["contains", "exact"],
-        "first_name": ["contains", "exact"],
+        "name": ["contains", "exact"],
         "is_staff": ["exact"],
         "is_superuser": ["exact"],
         "is_active": ["exact"],
-        "last_name": ["contains", "exact"],
     }
-    ordering_fields = ("id", "email", "first_name", "last_name")
+    ordering_fields = ("id", "email", "name")
     queryset = User.objects.all()
 
     @action(["get"], detail=False)
