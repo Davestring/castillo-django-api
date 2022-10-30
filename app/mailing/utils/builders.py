@@ -1,28 +1,28 @@
 """Mailing builders module."""
+from typing import Tuple, Union
+
 from django.shortcuts import get_object_or_404
 from django.template.loader import render_to_string
 
-from app.booking.models import Booking, Guest
+from app.booking.models import Booking
 from app.mailing.utils.functools import get_user_fullname
 
 
-def booking_summary_email_builder(guest_email: str) -> str:
+def booking_summary_email_builder(booking_id: Union[int, str]) -> Tuple[str, str]:
     """Load and build the booking summary template.
 
     Parameters
     ----------
-    guest_email : str
-        Guest's email address that will help to find its latest reservation information.
+    booking_id : Union[int, str]
+        Booking unique identifier that will help to retrieve the guest and booking information.
 
     """
-    guest = get_object_or_404(Guest, email=guest_email)
-
-    booking = Booking.objects.filter(guest__email=guest_email).order_by("-check_in").first()
+    booking = get_object_or_404(Booking, id=booking_id)
 
     context = {
-        "guest": get_user_fullname(guest),
+        "guest": get_user_fullname(booking),
         "check_in": booking.check_in,
         "check_out": booking.check_out,
     }
 
-    return render_to_string("pages/booking.html", context)
+    return render_to_string("pages/booking.html", context), booking.email

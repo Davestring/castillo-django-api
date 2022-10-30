@@ -15,14 +15,15 @@ from utils import BadRequest
 @permission_classes([HasAPIKey])
 def mailing(request: Request) -> Response:
     """Triggers an email when this endpoint is called."""
-    recipient = request.data.get("recipient")
+    booking_id = request.data.get("booking_id")
+
     event = request.data.get("event")
 
-    if recipient is None or event is None:
+    if booking_id is None or event is None:
         raise BadRequest
 
     if event == MailingEvents["BOOKING_SUMMARY"].name:
-        message = booking_summary_email_builder(recipient)
+        message, recipient = booking_summary_email_builder(booking_id)
 
     send_mail(MailingSubjects[event].value, message, settings.EMAIL_HOST_USER, [recipient], html_message=message)
 

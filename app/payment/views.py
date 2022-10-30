@@ -31,7 +31,7 @@ def payment(request: Request) -> Response:
         charge = stripe.Charge.create(
             amount=amount,
             currency=settings.STRIPE_CURRENCY,
-            description=f"{booking.guest.name} - {booking.check_in} to {booking.check_out} - amount: ${amount / 100}",
+            description=f"{booking.name} - {booking.check_in} to {booking.check_out} - amount: ${amount / 100}",
             source=token,
         )
 

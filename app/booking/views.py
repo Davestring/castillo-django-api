@@ -13,10 +13,14 @@ class BookingViewSet(ModelViewSet):
     filterset_fields = {
         "check_in": ["exact", "gt", "lt"],
         "check_out": ["exact", "gt", "lt"],
-        "guest": ["exact"],
+        "email": ["contains", "exact"],
+        "first_surname": ["contains", "exact"],
         "is_active": ["exact"],
+        "last_surname": ["contains", "exact"],
+        "name": ["contains", "exact"],
+        "phone": ["contains", "exact"],
     }
-    ordering_fields = ("check_in", "check_out", "id")
+    ordering_fields = ("check_in", "check_out", "email", "first_surname", "id", "last_surname", "name", "phone")
     permission_classes = [HasAPIKey, IsAuthenticatedOrReadCreateOnly]
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer

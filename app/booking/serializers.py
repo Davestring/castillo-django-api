@@ -12,9 +12,6 @@ class BookingSerializer(ModelSerializer):
 
         Attributes
         ----------
-        depth : int
-            Integer value that indicates the depth of relationships that should be traversed before reverting to a flat
-            representation.
         fields : str
             Fields that should be included in the serializer.
         model : Service
@@ -24,7 +21,6 @@ class BookingSerializer(ModelSerializer):
 
         """
 
-        depth = 1
         fields = "__all__"
         model = Booking
         read_only_fields = ("id", "created", "updated")
