@@ -32,7 +32,7 @@ class Booking(BaseModel):
     first_surname = CharField(max_length=150)
     last_surname = CharField(blank=True, default=None, max_length=150, null=True)
     email = EmailField()
-    phone = CharField(max_length=12)
+    phone = CharField(max_length=25)
 
     class Meta:
         """Model meta options.
