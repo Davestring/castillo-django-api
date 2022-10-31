@@ -25,4 +25,4 @@ class HealthAPIView(APIView):
             An HTTP success `Response` if the server is up and running.
 
         """
-        return Response({"status": "Ok!"})
+        return Response({"status": "Up!"})
