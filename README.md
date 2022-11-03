@@ -3,7 +3,7 @@
 ## Getting started
 
 ```bash
-$ brew install mysql
+$ brew install postgres
 ```
 
 ```bash
